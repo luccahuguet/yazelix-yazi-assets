@@ -53,6 +53,7 @@
               pkgs.coreutils
               pkgs.findutils
               pkgs.gnugrep
+              pkgs.lua
             ];
             installCheckPhase = ''
               runHook preInstallCheck
@@ -64,6 +65,7 @@
               test -f "$install_root/plugins/lazygit.yazi/main.lua"
               test -f "$install_root/plugins/starship.yazi/main.lua"
               test -f "$install_root/plugins/auto-layout.yazi/main.lua"
+              lua -e "assert(loadfile('$install_root/plugins/lazygit.yazi/main.lua'))"
 
               flavor_count="$(find "$install_root/flavors" -name flavor.toml | wc -l | tr -d ' ')"
               test "$flavor_count" = "24"
