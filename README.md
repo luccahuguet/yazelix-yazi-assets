@@ -10,6 +10,7 @@ This repository exists for non-Yazelix users who want the reusable Yazi pieces w
 - `plugins/git.yazi/`, `plugins/lazygit.yazi/`, and `plugins/starship.yazi/` contain reusable Yazi plugins with their upstream license files
 - `plugins/auto-layout.yazi/` contains the Yazelix-maintained Yazi auto-layout helper
 - `yazelix_starship.toml` contains the Starship prompt config used by the Yazi integration
+- `config_metadata/yazi_assets_manifest.toml` declares the packaged asset shape for consumers that need a stable manifest
 
 Yazelix-specific sidebar/editor orchestration plugins remain in the main Yazelix repository because they depend on the managed pane/session contract
 
@@ -27,4 +28,4 @@ The package installs assets under:
 share/yazelix_yazi_assets/
 ```
 
-That directory contains `flavors/`, `plugins/`, and `yazelix_starship.toml`
+That directory contains `flavors/`, `plugins/`, `yazelix_starship.toml`, and `config_metadata/yazi_assets_manifest.toml`

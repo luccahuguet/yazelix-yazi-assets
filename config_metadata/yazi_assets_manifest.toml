@@ -1,0 +1,37 @@
+schema_version = 1
+assets_root = "share/yazelix_yazi_assets"
+starship_config = "yazelix_starship.toml"
+
+plugins = [
+  "auto-layout.yazi",
+  "git.yazi",
+  "lazygit.yazi",
+  "starship.yazi",
+]
+
+flavors = [
+  "ashen.yazi",
+  "ayu-dark.yazi",
+  "bluloco-dark.yazi",
+  "bluloco-light.yazi",
+  "catppuccin-frappe.yazi",
+  "catppuccin-latte.yazi",
+  "catppuccin-macchiato.yazi",
+  "catppuccin-mocha.yazi",
+  "dracula.yazi",
+  "everforest-medium.yazi",
+  "flexoki-dark.yazi",
+  "flexoki-light.yazi",
+  "gruvbox-dark.yazi",
+  "kanagawa-dragon.yazi",
+  "kanagawa-lotus.yazi",
+  "kanagawa.yazi",
+  "monokai.yazi",
+  "neon.yazi",
+  "nord.yazi",
+  "rose-pine-dawn.yazi",
+  "rose-pine-moon.yazi",
+  "rose-pine.yazi",
+  "synthwave84.yazi",
+  "tokyo-night.yazi",
+]
