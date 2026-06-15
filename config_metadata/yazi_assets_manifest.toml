@@ -1,6 +1,13 @@
 schema_version = 1
 assets_root = "share/yazelix_yazi_assets"
 starship_config = "yazelix_starship.toml"
+render_plan_metadata = "config_metadata/yazi_render_plan.toml"
+
+config_templates = [
+  "yazelix_keymap.toml",
+  "yazelix_theme.toml",
+  "yazelix_yazi.toml",
+]
 
 plugins = [
   "auto-layout.yazi",
