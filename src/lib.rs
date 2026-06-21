@@ -779,12 +779,12 @@ desc = "Open zoxide in editor"
             .get("prepend_exts")
             .and_then(TomlValue::as_array)
             .expect("generated extension icon overrides");
-        assert!(has_icon(prepend_files, "README.md", ""));
-        assert!(has_icon(prepend_files, "robots.txt", ""));
-        assert!(has_icon(prepend_files, "sitemap.xml", ""));
-        assert!(has_icon(prepend_exts, "md", ""));
-        assert!(has_icon(prepend_exts, "txt", ""));
-        assert!(has_icon(prepend_exts, "xml", ""));
+        assert!(has_icon(prepend_files, "README.md", "MD"));
+        assert!(has_icon(prepend_files, "robots.txt", "T"));
+        assert!(has_icon(prepend_files, "sitemap.xml", "<>"));
+        assert!(has_icon(prepend_exts, "md", "MD"));
+        assert!(has_icon(prepend_exts, "txt", "T"));
+        assert!(has_icon(prepend_exts, "xml", "<>"));
     }
 
     fn has_icon(entries: &[TomlValue], name: &str, text: &str) -> bool {
@@ -801,12 +801,12 @@ desc = "Open zoxide in editor"
         let raw = include_str!("../flavors/neon.yazi/flavor.toml");
 
         for expected in [
-            r#"{ url = "README*", text = "" }"#,
-            r#"{ url = "*.md", text = "" }"#,
-            r#"{ url = "robots.txt", text = "" }"#,
-            r#"{ url = "*.txt", text = "" }"#,
-            r#"{ url = "sitemap.xml", text = "" }"#,
-            r#"{ url = "*.xml", text = "" }"#,
+            r#"{ url = "README*", text = "MD" }"#,
+            r#"{ url = "*.md", text = "MD" }"#,
+            r#"{ url = "robots.txt", text = "T" }"#,
+            r#"{ url = "*.txt", text = "T" }"#,
+            r#"{ url = "sitemap.xml", text = "<>" }"#,
+            r#"{ url = "*.xml", text = "<>" }"#,
         ] {
             assert!(
                 raw.contains(expected),

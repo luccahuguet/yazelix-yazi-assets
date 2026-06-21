@@ -6,15 +6,15 @@ sep_right = { open = "", close = "" }
 
 [icon]
 prepend_files = [
-  { name = "README", text = "", fg = "#7dcfff" },
-  { name = "README.md", text = "", fg = "#7dcfff" },
-  { name = "robots.txt", text = "", fg = "#89e051" },
-  { name = "sitemap.xml", text = "", fg = "#e37933" },
+  { name = "README", text = "MD", fg = "#7dcfff" },
+  { name = "README.md", text = "MD", fg = "#7dcfff" },
+  { name = "robots.txt", text = "T", fg = "#89e051" },
+  { name = "sitemap.xml", text = "<>", fg = "#e37933" },
 ]
 prepend_exts = [
-  { name = "md", text = "", fg = "#7dcfff" },
-  { name = "markdown", text = "", fg = "#7dcfff" },
-  { name = "txt", text = "", fg = "#89e051" },
-  { name = "xml", text = "", fg = "#e37933" },
-  { name = "xslt", text = "", fg = "#33a9dc" },
+  { name = "md", text = "MD", fg = "#7dcfff" },
+  { name = "markdown", text = "MD", fg = "#7dcfff" },
+  { name = "txt", text = "T", fg = "#89e051" },
+  { name = "xml", text = "<>", fg = "#e37933" },
+  { name = "xslt", text = "<>", fg = "#33a9dc" },
 ]
