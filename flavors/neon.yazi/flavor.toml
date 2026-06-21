@@ -330,12 +330,14 @@ globs = [
 	{ url = "*.toml", text = "" },
 	{ url = "*.yaml", text = "" },
 	{ url = "*.yml", text = "" },
-	{ url = "*.xml", text = "" },
+	{ url = "sitemap.xml", text = "" },
+	{ url = "*.xml", text = "" },
 
 	# Documents
-	{ url = "*.md", text = "" },
+	{ url = "robots.txt", text = "" },
+	{ url = "*.md", text = "" },
 	{ url = "*.pdf", text = "" },
-	{ url = "*.txt", text = "" },
+	{ url = "*.txt", text = "" },
 
 	# Media
 	{ url = "*.png", text = "" },
@@ -358,7 +360,7 @@ globs = [
 	{ url = "Cargo.toml", text = "" },
 	{ url = "Makefile", text = "" },
 	{ url = ".gitignore", text = "" },
-	{ url = "README*", text = "" },
+	{ url = "README*", text = "" },
 	{ url = "LICENSE*", text = "" },
 
 	# Default

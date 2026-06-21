@@ -794,6 +794,27 @@ desc = "Open zoxide in editor"
         })
     }
 
+    // Defends: the active bundled flavor carries the same rendered-safe document icons
+    // used by the generated theme sidecar.
+    #[test]
+    fn neon_flavor_uses_rendered_safe_document_icons() {
+        let raw = include_str!("../flavors/neon.yazi/flavor.toml");
+
+        for expected in [
+            r#"{ url = "README*", text = "" }"#,
+            r#"{ url = "*.md", text = "" }"#,
+            r#"{ url = "robots.txt", text = "" }"#,
+            r#"{ url = "*.txt", text = "" }"#,
+            r#"{ url = "sitemap.xml", text = "" }"#,
+            r#"{ url = "*.xml", text = "" }"#,
+        ] {
+            assert!(
+                raw.contains(expected),
+                "missing rendered-safe neon icon glob: {expected}"
+            );
+        }
+    }
+
     // Defends: the bundled Yazi sidebar prompt stays icon-only without emoji-width ambiguity.
     #[test]
     fn bundled_starship_prompt_uses_nerd_font_symbols() {
