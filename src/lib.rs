@@ -11,6 +11,10 @@ use std::sync::OnceLock;
 use std::time::{SystemTime, UNIX_EPOCH};
 use toml::Value as TomlValue;
 
+mod starship;
+
+pub use starship::render_yazelix_starship_config;
+
 const APPEARANCE_MODE_DARK: &str = "dark";
 const APPEARANCE_MODE_LIGHT: &str = "light";
 const YAZI_THEME_LIGHT: &str = "catppuccin-latte";
@@ -815,6 +819,15 @@ desc = "Open zoxide in editor"
         }
     }
 
+    // Defends: the checked-in Starship asset is generated from the compact module table.
+    #[test]
+    fn checked_in_starship_config_matches_generator() {
+        assert_eq!(
+            include_str!("../yazelix_starship.toml"),
+            render_yazelix_starship_config()
+        );
+    }
+
     // Defends: the bundled Yazi sidebar prompt stays icon-only without emoji-width ambiguity.
     #[test]
     fn bundled_starship_prompt_uses_nerd_font_symbols() {
@@ -829,12 +842,21 @@ desc = "Open zoxide in editor"
             );
         }
         for symbol in [
-            "󰏗", "", "", "", "", "", "", "", "", "", "", "", "", "",
+            "", "", "", "", "", "", "", "", "", "", "", "", "", "",
         ] {
             assert!(
                 raw.contains(symbol),
                 "missing sidebar Starship icon: {symbol}"
             );
         }
+
+        assert!(
+            !raw.contains("$git_status \\"),
+            "git_status should not inject an unconditional space before icon modules"
+        );
+        assert!(
+            raw.contains("format = \"[ $symbol]($style)\""),
+            "icon-only modules should carry their own leading separator"
+        );
     }
 }

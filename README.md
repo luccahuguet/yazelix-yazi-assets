@@ -23,6 +23,12 @@ Build the package:
 nix build .#yazelix_yazi_assets
 ```
 
+Regenerate the checked-in Starship config:
+
+```bash
+cargo run --bin generate_yazelix_starship > yazelix_starship.toml
+```
+
 The package installs assets under:
 
 ```text
