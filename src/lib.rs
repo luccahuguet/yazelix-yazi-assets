@@ -828,6 +828,38 @@ desc = "Open zoxide in editor"
         );
     }
 
+    // Defends: contextual shell decorations survive in Yazi without leaking labels or values.
+    #[test]
+    fn bundled_starship_context_modules_are_icon_only() {
+        let raw = include_str!("../yazelix_starship.toml");
+
+        for module in [
+            "aws",
+            "gcloud",
+            "openstack",
+            "azure",
+            "kubernetes",
+            "docker_context",
+            "container",
+            "terraform",
+            "pulumi",
+        ] {
+            assert!(
+                raw.contains(&format!("${module}\\")),
+                "missing contextual sidebar module: {module}"
+            );
+        }
+
+        let config = toml::from_str::<toml::Table>(raw).expect("sidebar Starship TOML");
+        let aws = config["aws"].as_table().expect("AWS sidebar module");
+        assert_eq!(aws.len(), 2);
+        let format = aws["format"].as_str().expect("AWS format");
+        assert_eq!(format, "[ $symbol]($style)");
+        for value in ["$profile", "$region", "$duration"] {
+            assert!(!format.contains(value), "AWS sidebar leaked {value}");
+        }
+    }
+
     // Defends: the bundled Yazi sidebar prompt stays icon-only without emoji-width ambiguity.
     #[test]
     fn bundled_starship_prompt_uses_nerd_font_symbols() {

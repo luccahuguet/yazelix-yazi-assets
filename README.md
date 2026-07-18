@@ -9,7 +9,7 @@ This repository exists for non-Yazelix users who want the reusable Yazi pieces w
 - `flavors/` contains the bundled Yazelix Yazi flavor catalog
 - `plugins/git.yazi/`, `plugins/lazygit.yazi/`, and `plugins/starship.yazi/` contain reusable Yazi plugins with their upstream license files
 - `plugins/auto-layout.yazi/` contains the Yazelix-maintained Yazi auto-layout helper
-- `yazelix_starship.toml` contains the Starship prompt config used by the Yazi integration
+- `yazelix_starship.toml` mirrors Starship's contextual prompt modules for Yazi, keeping directory and Git text while rendering other decorations as icons
 - `config_metadata/yazi_assets_manifest.toml` declares the packaged asset shape for consumers that need a stable manifest
 - `config_metadata/yazi_render_plan.toml` and `config_templates/` feed the Rust config-pack renderer
 

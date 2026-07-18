@@ -5,30 +5,179 @@
 # Do not edit directly; run `cargo run --bin generate_yazelix_starship > yazelix_starship.toml`.
 #
 # Compact starship prompt optimized for narrow sidebar display.
-# Nerd Font icons only, no versions - keeps it legible in the one-row header.
+# Directory and Git keep compact text; contextual modules render Nerd Font icons only.
 #
 # Example: "yazelix main  "
 # ========================================
 
 format = """
+$hostname\
 $directory\
 $git_branch\
 $git_status\
+$shlvl\
+$singularity\
+$kubernetes\
+$nats\
+$docker_context\
 $package\
-$python\
-$nodejs\
-$rust\
-$golang\
-$java\
-$lua\
-$ruby\
-$php\
-$kotlin\
-$swift\
-$zig\
+$bun\
+$c\
+$cmake\
+$cobol\
+$cpp\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$fennel\
+$fortran\
 $gleam\
+$golang\
+$gradle\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$lua\
+$maven\
+$mojo\
+$nim\
+$nodejs\
+$ocaml\
+$odin\
+$opa\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$quarto\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$solidity\
+$swift\
+$terraform\
+$typst\
+$vlang\
+$vagrant\
+$xmake\
+$zig\
+$buf\
+$guix_shell\
 $nix_shell\
+$conda\
+$pixi\
+$meson\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$direnv\
+$mise\
+$crystal\
+$sudo\
+$jobs\
+$battery\
+$status\
+$container\
+$netns\
 """
+
+shlvl = { format = "[ $symbol]($style)", symbol = "󰹍" }
+singularity = { format = "[ $symbol]($style)", symbol = "" }
+kubernetes = { format = "[ $symbol]($style)", symbol = "󱃾" }
+nats = { format = "[ $symbol]($style)", symbol = "" }
+docker_context = { format = "[ $symbol]($style)", symbol = "" }
+package = { format = "[ $symbol]($style)", symbol = "" }
+bun = { format = "[ $symbol]($style)", symbol = "" }
+c = { format = "[ $symbol]($style)", symbol = "" }
+cmake = { format = "[ $symbol]($style)", symbol = "" }
+cobol = { format = "[ $symbol]($style)", symbol = "" }
+cpp = { format = "[ $symbol]($style)", symbol = "" }
+daml = { format = "[ $symbol]($style)", symbol = "󰘧" }
+dart = { format = "[ $symbol]($style)", symbol = "" }
+deno = { format = "[ $symbol]($style)", symbol = "" }
+dotnet = { format = "[ $symbol]($style)", symbol = "" }
+elixir = { format = "[ $symbol]($style)", symbol = "" }
+elm = { format = "[ $symbol]($style)", symbol = "" }
+erlang = { format = "[ $symbol]($style)", symbol = "" }
+fennel = { format = "[ $symbol]($style)", symbol = "" }
+fortran = { format = "[ $symbol]($style)", symbol = "" }
+gleam = { format = "[ $symbol]($style)", symbol = "" }
+golang = { format = "[ $symbol]($style)", symbol = "" }
+gradle = { format = "[ $symbol]($style)", symbol = "" }
+haskell = { format = "[ $symbol]($style)", symbol = "" }
+haxe = { format = "[ $symbol]($style)", symbol = "" }
+helm = { format = "[ $symbol]($style)", symbol = "" }
+java = { format = "[ $symbol]($style)", symbol = "" }
+julia = { format = "[ $symbol]($style)", symbol = "" }
+kotlin = { format = "[ $symbol]($style)", symbol = "" }
+lua = { format = "[ $symbol]($style)", symbol = "" }
+maven = { format = "[ $symbol]($style)", symbol = "" }
+mojo = { format = "[ $symbol]($style)", symbol = "󰈸" }
+nim = { format = "[ $symbol]($style)", symbol = "" }
+nodejs = { format = "[ $symbol]($style)", symbol = "" }
+ocaml = { format = "[ $symbol]($style)", symbol = "" }
+odin = { format = "[ $symbol]($style)", symbol = "󰟢" }
+opa = { format = "[ $symbol]($style)", symbol = "" }
+perl = { format = "[ $symbol]($style)", symbol = "" }
+php = { format = "[ $symbol]($style)", symbol = "" }
+pulumi = { format = "[ $symbol]($style)", symbol = "" }
+purescript = { format = "[ $symbol]($style)", symbol = "" }
+python = { format = "[ $symbol]($style)", symbol = "" }
+quarto = { format = "[ $symbol]($style)", symbol = "󰂺" }
+raku = { format = "[ $symbol]($style)", symbol = "󱖊" }
+rlang = { format = "[ $symbol]($style)", symbol = "󰟔" }
+red = { format = "[ $symbol]($style)", symbol = "󱍼" }
+ruby = { format = "[ $symbol]($style)", symbol = "" }
+rust = { format = "[ $symbol]($style)", symbol = "" }
+scala = { format = "[ $symbol]($style)", symbol = "" }
+solidity = { format = "[ $symbol]($style)", symbol = "" }
+swift = { format = "[ $symbol]($style)", symbol = "" }
+terraform = { format = "[ $symbol]($style)", symbol = "" }
+typst = { format = "[ $symbol]($style)", symbol = "" }
+vlang = { format = "[ $symbol]($style)", symbol = "" }
+vagrant = { format = "[ $symbol]($style)", symbol = "" }
+xmake = { format = "[ $symbol]($style)", symbol = "" }
+zig = { format = "[ $symbol]($style)", symbol = "" }
+buf = { format = "[ $symbol]($style)", symbol = "" }
+guix_shell = { format = "[ $symbol]($style)", symbol = "" }
+nix_shell = { format = "[ $symbol]($style)", symbol = "" }
+conda = { format = "[ $symbol]($style)", symbol = "" }
+pixi = { format = "[ $symbol]($style)", symbol = "󰏗" }
+meson = { format = "[ $symbol]($style)", symbol = "󰔷" }
+spack = { format = "[ $symbol]($style)", symbol = "" }
+memory_usage = { format = "[ $symbol]($style)", symbol = "󰍛" }
+aws = { format = "[ $symbol]($style)", symbol = "" }
+gcloud = { format = "[ $symbol]($style)", symbol = "󱇶" }
+openstack = { format = "[ $symbol]($style)", symbol = "" }
+azure = { format = "[ $symbol]($style)", symbol = "" }
+direnv = { format = "[ $symbol]($style)", symbol = "" }
+mise = { format = "[ $symbol]($style)", symbol = "" }
+crystal = { format = "[ $symbol]($style)", symbol = "" }
+sudo = { format = "[ $symbol]($style)", symbol = "" }
+jobs = { format = "[ $symbol]($style)", symbol = "" }
+battery = { format = "[ $symbol]($style)" }
+status = { format = "[ $symbol]($style)", symbol = "" }
+container = { format = "[ $symbol]($style)", symbol = "" }
+netns = { format = "[ $symbol]($style)", symbol = "󰛳" }
+
+# SSH host - icon only
+[hostname]
+format = "[ $ssh_symbol]($style)"
+ssh_symbol = ""
 
 # Directory - show only current folder name
 [directory]
@@ -55,76 +204,6 @@ modified = "!"
 staged = "+"
 renamed = "r"
 deleted = "x"
-
-# Package - icon only
-[package]
-format = "[ $symbol]($style)"
-symbol = ""
-
-# Python - icon only
-[python]
-format = "[ $symbol]($style)"
-symbol = ""
-
-# Node.js - icon only
-[nodejs]
-format = "[ $symbol]($style)"
-symbol = ""
-
-# Rust - icon only
-[rust]
-format = "[ $symbol]($style)"
-symbol = ""
-
-# Go - icon only
-[golang]
-format = "[ $symbol]($style)"
-symbol = ""
-
-# Java - icon only
-[java]
-format = "[ $symbol]($style)"
-symbol = ""
-
-# Lua - icon only
-[lua]
-format = "[ $symbol]($style)"
-symbol = ""
-
-# Ruby - icon only
-[ruby]
-format = "[ $symbol]($style)"
-symbol = ""
-
-# PHP - icon only
-[php]
-format = "[ $symbol]($style)"
-symbol = ""
-
-# Kotlin - icon only
-[kotlin]
-format = "[ $symbol]($style)"
-symbol = ""
-
-# Swift - icon only
-[swift]
-format = "[ $symbol]($style)"
-symbol = ""
-
-# Zig - icon only
-[zig]
-format = "[ $symbol]($style)"
-symbol = ""
-
-# Gleam - icon only
-[gleam]
-format = "[ $symbol]($style)"
-symbol = ""
-
-# Nix shell - icon only
-[nix_shell]
-format = "[ $symbol]($style)"
-symbol = ""
 
 # Disable time-based modules
 [cmd_duration]

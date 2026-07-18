@@ -1,83 +1,85 @@
 use std::fmt::Write as _;
 
-struct IconModule {
-    name: &'static str,
-    label: &'static str,
-    symbol: &'static str,
-}
-
 const ICON_MODULE_FORMAT: &str = "[ $symbol]($style)";
-const ICON_MODULES: &[IconModule] = &[
-    IconModule {
-        name: "package",
-        label: "Package",
-        symbol: "",
-    },
-    IconModule {
-        name: "python",
-        label: "Python",
-        symbol: "",
-    },
-    IconModule {
-        name: "nodejs",
-        label: "Node.js",
-        symbol: "",
-    },
-    IconModule {
-        name: "rust",
-        label: "Rust",
-        symbol: "",
-    },
-    IconModule {
-        name: "golang",
-        label: "Go",
-        symbol: "",
-    },
-    IconModule {
-        name: "java",
-        label: "Java",
-        symbol: "",
-    },
-    IconModule {
-        name: "lua",
-        label: "Lua",
-        symbol: "",
-    },
-    IconModule {
-        name: "ruby",
-        label: "Ruby",
-        symbol: "",
-    },
-    IconModule {
-        name: "php",
-        label: "PHP",
-        symbol: "",
-    },
-    IconModule {
-        name: "kotlin",
-        label: "Kotlin",
-        symbol: "",
-    },
-    IconModule {
-        name: "swift",
-        label: "Swift",
-        symbol: "",
-    },
-    IconModule {
-        name: "zig",
-        label: "Zig",
-        symbol: "",
-    },
-    IconModule {
-        name: "gleam",
-        label: "Gleam",
-        symbol: "",
-    },
-    IconModule {
-        name: "nix_shell",
-        label: "Nix shell",
-        symbol: "",
-    },
+const ICON_MODULES: &[(&str, &str)] = &[
+    ("shlvl", "󰹍"),
+    ("singularity", ""),
+    ("kubernetes", "󱃾"),
+    ("nats", ""),
+    ("docker_context", ""),
+    ("package", ""),
+    ("bun", ""),
+    ("c", ""),
+    ("cmake", ""),
+    ("cobol", ""),
+    ("cpp", ""),
+    ("daml", "󰘧"),
+    ("dart", ""),
+    ("deno", ""),
+    ("dotnet", ""),
+    ("elixir", ""),
+    ("elm", ""),
+    ("erlang", ""),
+    ("fennel", ""),
+    ("fortran", ""),
+    ("gleam", ""),
+    ("golang", ""),
+    ("gradle", ""),
+    ("haskell", ""),
+    ("haxe", ""),
+    ("helm", ""),
+    ("java", ""),
+    ("julia", ""),
+    ("kotlin", ""),
+    ("lua", ""),
+    ("maven", ""),
+    ("mojo", "󰈸"),
+    ("nim", ""),
+    ("nodejs", ""),
+    ("ocaml", ""),
+    ("odin", "󰟢"),
+    ("opa", ""),
+    ("perl", ""),
+    ("php", ""),
+    ("pulumi", ""),
+    ("purescript", ""),
+    ("python", ""),
+    ("quarto", "󰂺"),
+    ("raku", "󱖊"),
+    ("rlang", "󰟔"),
+    ("red", "󱍼"),
+    ("ruby", ""),
+    ("rust", ""),
+    ("scala", ""),
+    ("solidity", ""),
+    ("swift", ""),
+    ("terraform", ""),
+    ("typst", ""),
+    ("vlang", ""),
+    ("vagrant", ""),
+    ("xmake", ""),
+    ("zig", ""),
+    ("buf", ""),
+    ("guix_shell", ""),
+    ("nix_shell", ""),
+    ("conda", ""),
+    ("pixi", "󰏗"),
+    ("meson", "󰔷"),
+    ("spack", ""),
+    ("memory_usage", "󰍛"),
+    ("aws", ""),
+    ("gcloud", "󱇶"),
+    ("openstack", ""),
+    ("azure", ""),
+    ("direnv", ""),
+    ("mise", ""),
+    ("crystal", ""),
+    ("sudo", ""),
+    ("jobs", ""),
+    ("battery", ""),
+    ("status", ""),
+    ("container", ""),
+    ("netns", "󰛳"),
 ];
 
 pub fn render_yazelix_starship_config() -> String {
@@ -90,22 +92,35 @@ pub fn render_yazelix_starship_config() -> String {
 # Do not edit directly; run `cargo run --bin generate_yazelix_starship > yazelix_starship.toml`.
 #
 # Compact starship prompt optimized for narrow sidebar display.
-# Nerd Font icons only, no versions - keeps it legible in the one-row header.
+# Directory and Git keep compact text; contextual modules render Nerd Font icons only.
 #
 # Example: "yazelix main  "
 # ========================================
 
 format = """
+$hostname\
 $directory\
 $git_branch\
 $git_status\
 "#,
     );
-    for module in ICON_MODULES {
-        writeln!(out, "${}\\", module.name).unwrap();
+    for &(name, _) in ICON_MODULES {
+        writeln!(out, "${name}\\").unwrap();
+    }
+    out.push_str("\"\"\"\n\n");
+    for &(name, symbol) in ICON_MODULES {
+        write!(out, "{name} = {{ format = \"{ICON_MODULE_FORMAT}\"").unwrap();
+        if !symbol.is_empty() {
+            write!(out, ", symbol = \"{symbol}\"").unwrap();
+        }
+        out.push_str(" }\n");
     }
     out.push_str(
-        r#""""
+        r#"
+# SSH host - icon only
+[hostname]
+format = "[ $ssh_symbol]($style)"
+ssh_symbol = ""
 
 # Directory - show only current folder name
 [directory]
@@ -135,14 +150,6 @@ deleted = "x"
 
 "#,
     );
-    for module in ICON_MODULES {
-        writeln!(
-            out,
-            "# {} - icon only\n[{}]\nformat = \"{}\"\nsymbol = \"{}\"\n",
-            module.label, module.name, ICON_MODULE_FORMAT, module.symbol
-        )
-        .unwrap();
-    }
     out.push_str(
         r#"# Disable time-based modules
 [cmd_duration]
