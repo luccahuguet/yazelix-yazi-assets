@@ -5,7 +5,7 @@
 # Do not edit directly; run `cargo run --bin generate_yazelix_starship > yazelix_starship.toml`.
 #
 # Compact starship prompt optimized for narrow sidebar display.
-# Directory and Git keep compact text; contextual modules render Nerd Font icons only.
+# Directory and Git keep compact text; contextual modules render compact icons only.
 #
 # Example: "yazelix main  "
 # ========================================
@@ -160,7 +160,7 @@ pixi = { format = "[ $symbol]($style)", symbol = "󰏗" }
 meson = { format = "[ $symbol]($style)", symbol = "󰔷" }
 spack = { format = "[ $symbol]($style)", symbol = "" }
 memory_usage = { format = "[ $symbol]($style)", symbol = "󰍛" }
-aws = { format = "[ $symbol]($style)", symbol = "" }
+aws = { format = "[ $symbol]($style)", symbol = "☁️" }
 gcloud = { format = "[ $symbol]($style)", symbol = "󱇶" }
 openstack = { format = "[ $symbol]($style)", symbol = "" }
 azure = { format = "[ $symbol]($style)", symbol = "" }

@@ -67,7 +67,7 @@ const ICON_MODULES: &[(&str, &str)] = &[
     ("meson", "󰔷"),
     ("spack", ""),
     ("memory_usage", "󰍛"),
-    ("aws", ""),
+    ("aws", "☁️"),
     ("gcloud", "󱇶"),
     ("openstack", ""),
     ("azure", ""),
@@ -92,7 +92,7 @@ pub fn render_yazelix_starship_config() -> String {
 # Do not edit directly; run `cargo run --bin generate_yazelix_starship > yazelix_starship.toml`.
 #
 # Compact starship prompt optimized for narrow sidebar display.
-# Directory and Git keep compact text; contextual modules render Nerd Font icons only.
+# Directory and Git keep compact text; contextual modules render compact icons only.
 #
 # Example: "yazelix main  "
 # ========================================

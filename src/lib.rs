@@ -860,9 +860,9 @@ desc = "Open zoxide in editor"
         }
     }
 
-    // Defends: the bundled Yazi sidebar prompt stays icon-only without emoji-width ambiguity.
+    // Defends: wide language and tool emoji stay out of the compact Yazi header.
     #[test]
-    fn bundled_starship_prompt_uses_nerd_font_symbols() {
+    fn bundled_starship_prompt_avoids_wide_language_emoji() {
         let raw = include_str!("../yazelix_starship.toml");
 
         for emoji in [
